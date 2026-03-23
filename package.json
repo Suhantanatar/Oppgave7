@@ -1,0 +1,49 @@
+{
+  "name": "oppgave7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc --noEmit && prettier --check .",
+    "prepare": "husky",
+    "dev": "vite",
+    "psql": "docker exec -i postgis /usr/bin/psql --user postgres",
+    "layer:grunnskoler:download": "download --extract --out tmp https://nedlasting.geonorge.no/geonorge/Befolkning/Grunnskoler/PostGIS/Befolkning_0000_Norge_25833_Grunnskoler_PostGIS.zip",
+    "layer:grunnskoler:import": "npm run psql < tmp/Befolkning_0000_Norge_25833_Grunnskoler_PostGIS.sql",
+    "layer:fylker2023:download": "download --extract --out tmp https://nedlasting.geonorge.no/geonorge/Basisdata/Fylker/PostGIS/Basisdata_0000_Norge_25833_Fylker_PostGIS.zip",
+    "layer:fylker2023:import": "npm run psql < tmp/Basisdata_0000_Norge_25833_Fylker_PostGIS.sql",
+    "server": "tsx --watch server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Suhantanatar/Oppgave7.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Suhantanatar/Oppgave7/issues"
+  },
+  "homepage": "https://github.com/Suhantanatar/Oppgave7#readme",
+  "devDependencies": {
+    "@types/pg": "^8.20.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "download-cli": "^1.1.1",
+    "husky": "^9.1.7",
+    "prettier": "^3.8.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.2"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.11",
+    "hono": "^4.12.9",
+    "ol": "^10.8.0",
+    "pg": "^8.20.0",
+    "proj4": "^2.20.4",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "type": "module"
+}

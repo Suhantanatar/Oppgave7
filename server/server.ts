@@ -1,3 +1,4 @@
+import { serveStatic } from "@hono/node-server/serve-static";
 import { Hono } from "hono";
 import { serve } from "@hono/node-server";
 import pg from "pg";
@@ -42,3 +43,4 @@ serve({
   fetch: app.fetch,
   port: 3000,
 });
+app.use("*", serveStatic({ root: "../dist" }));

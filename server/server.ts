@@ -17,10 +17,10 @@ app.get("/api/grunnskoler", async (c) => {
       s.eierforhold,
       s.antallelever,
       s.posisjon::json as geometry
-    from grunnskoler_d3dd22a6be80438d9f44b0afa9b82b1b.grunnskole s
-    inner join fylker_a60155918c4a47c2b78f4ab52fc2bfa4.fylke f
+    from grunnskoler_3a006a25a9f7437287ed36c2a7f54c51.grunnskole s
+    inner join fylker_ba7aea2735714391a98b1a585644e98a.fylke f
       on st_contains(f.omrade, s.posisjon)
-    inner join fylker_a60155918c4a47c2b78f4ab52fc2bfa4.administrativenhetnavn a
+    inner join fylker_ba7aea2735714391a98b1a585644e98a.administrativenhetnavn a
       on f.lokalid = a.fylke_fk
      and a.sprak = 'nor'
     where a.navn in ('Akershus', 'Buskerud', 'Østfold')

@@ -13,14 +13,12 @@ const postgresql = new pg.Pool({
       try {
         const result = await postgresql.query(`
           select
-            s.skolenavn,
-            s.eierforhold,
-            s.antallelever,
-            st_asgeojson(s.posisjon)::json as geometry
-          from grunnskoler_3a006a25a9f7437287ed36c2a7f54c51.grunnskole s
-          inner join fylker_ba7aea2735714391a98b1a585644e98a.fylke f
-            on st_intersects(f.omrade, s.posisjon)
-          where f.fylkesnavn = 'Viken'
+            skolenavn,
+            eierforhold,
+            antallelever,
+            st_asgeojson(posisjon)::json as geometry
+          from grunnskoler_3a006a25a9f7437287ed36c2a7f54c51.grunnskole
+          limit 20
         `);
 
         return c.json({

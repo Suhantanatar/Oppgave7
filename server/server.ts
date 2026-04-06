@@ -6,11 +6,8 @@ import pg from "pg";
 const app = new Hono();
 
 const postgresql = new pg.Pool({
-  user: "postgres",
-  password: "password",
-  host: "localhost",
-  port: 5432,
-  database: "postgres",
+  connectionString:
+    process.env.DATABASE_URL || "postgresql://postgres:@localhost",
 });
 
 app.get("/api/grunnskoler", async (c) => {

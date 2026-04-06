@@ -12,7 +12,7 @@
     "layer:grunnskoler:import": "npm run psql < tmp/Befolkning_0000_Norge_25833_Grunnskoler_PostGIS.sql",
     "layer:fylker2023:download": "download --extract --out tmp https://nedlasting.geonorge.no/geonorge/Basisdata/Fylker/PostGIS/Basisdata_0000_Norge_25833_Fylker_PostGIS.zip",
     "layer:fylker2023:import": "npm run psql < tmp/Basisdata_0000_Norge_25833_Fylker_PostGIS.sql",
-    "server": "tsx --watch server.ts",
+    "server": "cd server && npm run start",
     "build": "vite build",
     "start": "cd server && npm start",
     "postinstall": "cd server && npm install",
